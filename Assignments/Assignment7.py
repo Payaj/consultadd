@@ -102,4 +102,69 @@ obj = B()
 #Ans: Above code will print 30.
 # Reason: we are creating an object of class B which is a child class of A. using super inside init function of B we are inheriting init of A and getting the value of i as 15. But the multiply function of B is overriding the multiply function of A, hence i = 15*2 = 30.
 
+#5. Create a Time class and initialize it with hours and minutes.
+#Make a method addTime which should take two time object and add them. E.g.- (2 hour and 50 min)+(1 hr and 20 min) is (4 hr and 10 min)
+#Make a method displayTime which should print the time.
+#Make a method DisplayMinute which should display the total minutes in the Time. E.g.- (1 hr 2 min) should display 62 minute.
+
+class Time:
+    def __init__(self,timeString):
+        self.numbers = [int(i) for i in timeString.split() if i.isdigit()]
+        self.hr = self.numbers[0]
+        self.min = self.numbers[1]
+
+    def addTime(Time1, Time2):
+        hr1 = Time1.hr
+        hr2 = Time2.hr
+        min1 = Time1.min
+        min2 = Time2.min
+        TotalMin = ((min1+min2)%60)
+        TotalHours = (hr1+hr2)+((min1+min2)//60)
+        return Time(str(TotalHours)+" and "+str(TotalMin))
+
+    def displayTime(self):
+        print("Sum of both the time is: "+str(self.hr)+" hr and "+str(self.min)+" min")
+
+    def DisplayMinute(self):
+        print("Total time in minutes is: "+str(self.hr*60+self.min)+" minutes")
+
+TimeString1 = Time("2 hour and 50 min")
+TimeString2 = Time("1 hr and 20 min")
+obj2 = Time.addTime(TimeString1, TimeString2)
+obj2.displayTime()
+obj2.DisplayMinute()
+
+#6. Write a Person class with an instance variable, , and a constructor that takes an integer, , as a parameter. The constructor must assign  to  after confirming the argument passed as  is not negative; if a negative argument is passed as , the constructor should set  to  and print Age is not valid, setting age to 0.. In addition, you must write the following instance methods:
+#yearPasses() should increase the  instance variable by .
+#amIOld() should perform the following conditional actions:
+#If , print You are young..
+#If  and , print You are a teenager..
+#Otherwise, print You are old
+
+class Person:
+   def __init__(self,inputAge):
+       self.age = inputAge
+       if(self.age<0):
+           print("Age is not valid, setting age to 0.")
+           self.age = 0
+   def amIOld(self):
+        if self.age <13:
+            print("You are young..")
+        elif self.age > 12 and self.age < 20:
+            print("You are a teenager")
+        else:
+            print("You are Old")
+   def yearPasses(self):
+        self.age += 1
+
+num = int(input("Enter 4: "))
+
+for i in range(0, t):
+    age = int(input("Enter your age: "))
+    obj = Person(age)
+    obj.amIOld()
+    for j in range(0, 3):
+        obj.yearPasses()
+    obj.amIOld()
+    print("")
 
